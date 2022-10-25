@@ -17,7 +17,7 @@ public class CustomerOrVendorActivity extends AppCompatActivity {
         Button studentButton = findViewById(R.id.student_button);
         Button vendorButton = findViewById(R.id.vendor_button);
 
-        Intent i = new Intent(CustomerOrVendorActivity.this, MainActivity.class);
+        Intent i = new Intent(CustomerOrVendorActivity.this, SignUpActivity.class);
         studentButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -30,7 +30,7 @@ public class CustomerOrVendorActivity extends AppCompatActivity {
         vendorButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(CustomerOrVendorActivity.this, MainActivity.class);
+                Intent i = new Intent(CustomerOrVendorActivity.this, LogInActivity.class);
                 i.putExtra("is_student", false);
                 startActivity(i);
             }

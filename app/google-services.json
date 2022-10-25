@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "884864865362",
+    "project_id": "bhojnalaya-dcf5a",
+    "storage_bucket": "bhojnalaya-dcf5a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:884864865362:android:3b861bc74bd418349fbb8b",
+        "android_client_info": {
+          "package_name": "com.example.bhojnalya"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "884864865362-6gpqe2rn10gubrajl5tnb063bfjts7k4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBiu6QcIU45xJOnB3KthXQbngoHxGClIec"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "884864865362-6gpqe2rn10gubrajl5tnb063bfjts7k4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

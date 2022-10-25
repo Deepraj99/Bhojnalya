@@ -29,6 +29,9 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
+        Bundle bundle = getIntent().getExtras();
+        boolean isStudent = bundle.getBoolean("is_student");
+
         emailEditText = findViewById(R.id.email_edit_text);
         passwordEditText = findViewById(R.id.password_edit_text);
         confirmPasswordEditText = findViewById(R.id.confirm_password_edit_text);
@@ -36,15 +39,17 @@ public class SignUpActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.progress_bar);
         loginBtnTextView = findViewById(R.id.login_text_view_btn);
 
-        createAccountBtn.setOnClickListener(v -> createAccount());
+        progressBar.getIndeterminateDrawable().setColorFilter(0xFFF89C04, android.graphics.PorterDuff.Mode.MULTIPLY);
+
+        createAccountBtn.setOnClickListener(v -> createAccount(isStudent));
         loginBtnTextView.setOnClickListener(v -> finish());
     }
-    void createAccount() {
+    void createAccount(boolean isStudent) {
 
         String email = emailEditText.getText().toString();
         String password = passwordEditText.getText().toString();
         String confirmPassword = confirmPasswordEditText.getText().toString();
-        boolean isValidated = validateData(email, password, confirmPassword);
+        boolean isValidated = validateData(email, password, confirmPassword, isStudent);
 
         if(!isValidated) {
             return;
@@ -62,12 +67,12 @@ public class SignUpActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         changeInProgress(false);
                         if(task.isSuccessful()) {
-                            Toast.makeText(SignUpActivity.this, "Successfully created account, Check email to verify", Toast.LENGTH_SHORT).show();
+                            Utility.showToast(SignUpActivity.this, "Successfully created account, Check email to verify");
                             firebaseAuth.getCurrentUser().sendEmailVerification();
                             firebaseAuth.signOut();
                             finish();
                         } else {
-                            Toast.makeText(SignUpActivity.this, task.getException().getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                            Utility.showToast(SignUpActivity.this, task.getException().getLocalizedMessage());
                         }
                     }
                 });
@@ -81,11 +86,21 @@ public class SignUpActivity extends AppCompatActivity {
             createAccountBtn.setVisibility(View.VISIBLE);
         }
     }
-    boolean validateData(String email, String password, String confirmPassword) {
+    boolean validateData(String email, String password, String confirmPassword, boolean isStudent) {
 
-        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            emailEditText.setError("Email is invalid");
-            return false;
+        if(isStudent) {
+            if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                emailEditText.setError("Email is invalid");
+                return false;
+            } else if (!email.contains("@iiitu.ac.in")) {
+                emailEditText.setError("Enter your college email.");
+                return false;
+            }
+        } else {
+            if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                emailEditText.setError("Email is invalid");
+                return false;
+            }
         }
         if(password.length() < 6) {
             passwordEditText.setError("Password length is invalid");

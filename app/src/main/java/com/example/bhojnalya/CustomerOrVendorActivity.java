@@ -17,7 +17,7 @@ public class CustomerOrVendorActivity extends AppCompatActivity {
         Button studentButton = findViewById(R.id.student_button);
         Button vendorButton = findViewById(R.id.vendor_button);
 
-        Intent i = new Intent(CustomerOrVendorActivity.this, SignUpActivity.class);
+        Intent i = new Intent(CustomerOrVendorActivity.this, LogInActivity.class);
         studentButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

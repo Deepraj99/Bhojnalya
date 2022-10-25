@@ -57,7 +57,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/edit_text_border"
-            android:hint="Enter College Email"
+            android:hint="Enter Email"
             android:textColorHint="@color/gray"
             android:inputType="textEmailAddress"
             android:textColor="@color/black"
@@ -120,25 +120,25 @@
 
         <ProgressBar
             android:id="@+id/progress_bar"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="25dp"
             android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@+id/create_account_btn"
-            app:layout_constraintEnd_toEndOf="@+id/create_account_btn"
-            app:layout_constraintStart_toStartOf="@+id/create_account_btn"
-            app:layout_constraintTop_toTopOf="@+id/create_account_btn" />
+            app:layout_constraintEnd_toEndOf="@+id/confirm_password_edit_text"
+            app:layout_constraintStart_toStartOf="@+id/confirm_password_edit_text"
+            app:layout_constraintTop_toBottomOf="@+id/confirm_password_edit_text" />
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:text="@string/already_have_an_account"
             android:textColor="@color/black"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/create_account_btn"
-            app:layout_constraintStart_toStartOf="@+id/create_account_btn"
-            app:layout_constraintTop_toBottomOf="@+id/create_account_btn" />
+            android:layout_marginTop="80dp"
+            app:layout_constraintEnd_toEndOf="@+id/confirm_password_edit_text"
+            app:layout_constraintStart_toStartOf="@+id/confirm_password_edit_text"
+            app:layout_constraintTop_toBottomOf="@+id/confirm_password_edit_text" />
 
         <TextView
             android:id="@+id/login_text_view_btn"

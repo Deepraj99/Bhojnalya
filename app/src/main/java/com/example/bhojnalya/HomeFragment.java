@@ -7,58 +7,92 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+import android.widget.TextView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link HomeFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class HomeFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
+    Date d = new Date();
+    String dayOfTheWeek = sdf.format(d);
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    View fragmentView;
+    ListView listView;
+    TextView currentDay;
+    String[] headingList = {"Breakfast", "Lunch", "Snacks", "Dinner"};
+    String[] descriptionList;
 
-    public HomeFragment() {
-        // Required empty public constructor
-    }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment HomeFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static HomeFragment newInstance(String param1, String param2) {
-        HomeFragment fragment = new HomeFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+    {
+        if(dayOfTheWeek.equals("Sunday"))
+        {
+            descriptionList = new String[] {
+                    "Egg bhurji\nBread-2\nMilk/Coffee\nBournvita",
+                    "Chole bhature\nRice\nLassi\nSalad\nAachar",
+                    "50-50 biscuit\nTea",
+                    "Green seasonal vegetable\nArhar dal\nRoti\nRice\nSalad\nSewai"};
         }
-    }
+        else if(dayOfTheWeek.equals("Monday"))
+        {
+            descriptionList = new String[] {
+                    "Poha\nMilk/Coffee\nBournvita",
+                    "Aloo matar\nMaa chole\nDal\nRice\nRoti\nDahi\nAchar\nSalad",
+                    "Samosa\nTea",
+                    "Kadhai chicken\nMashoor dal\nRoti\nRice\nSalad\nGulaab jamun"};
+        }
+        else if(dayOfTheWeek.equals("Tuesday"))
+        {
+            descriptionList = new String[] {
+                    "Seasonal paratha\nDahi\nButter\nMilk/Coffee\nAchar\nFruit",
+                    "Aloo puri\nRice\nDahi\nSalad\nAchar",
+                    "Samosa",
+                    "Mix vegetable\nChana dal\nRoti\nRice\nSalad\nKesar kulfi"};
+        }
+        else if(dayOfTheWeek.equals("Wednesday"))
+        {
+            descriptionList = new String[] {
+                    "Upma\nCornflakes\nMilk/Coffee\nFruit",
+                    "White chole\nRoti\nRice\nSalad\nDahi\nLassi",
+                    "Parle-G biscuit\nTea",
+                    "Egg curry\nMoong dal\nRoti\nFried rice\nSalad\nAchar\nRasgulla"};
+        }
+        else if(dayOfTheWeek.equals("Thursday"))
+        {
+            descriptionList = new String[] {
+                    "Missa paratha\nButter\nDahi\nMilk/Coffee\nBournvita\nFruit",
+                    "Kadhi pakoda\nJeera aloo\nRoti\nRice\nSalad\nAchar",
+                    "Biscuit\nLamonade",
+                    "Seasonal vegetables\nDal makhani\nRoti\nRice\nSalad\nKheer"};
+        }
+        else if(dayOfTheWeek.equals("Friday"))
+        {
+            descriptionList = new String[] {
+                    "Aloo paratha\nDahi\nButter\nMilk/Coffee\nBournvita\nFruit\nAchar",
+                    "Chole bhature\nSalad\nAchar\nRice\nLassi",
+                    "50-50 Biscuit\nTea",
+                    "Green seasonal vegetables\nArhar dal\nRoti\nRice\nSalad\nSewai"};
+        }
+        else
+        {
+            descriptionList = new String[] {
+                    "Daliya with mixed dry fruits\nSprouts\nTea",
+                    "Rajma\nRoti\nRice\nSalad\nAchar\nDahi",
+                    "Namkeen\nTea",
+                    "Seasonal kofta\nMaa chana dal\nRoti\nRice\nSalad\nAchar\nSooji Halwa"};
+        }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        fragmentView = inflater.inflate(R.layout.fragment_home, container, false);
+        currentDay = fragmentView.findViewById(R.id.tv_current_day);
+        currentDay.setText("It's " + dayOfTheWeek.toLowerCase() + " today!");
+        listView = fragmentView.findViewById(R.id.customListView);
+        CustomBaseAdapter customBaseAdapter1 = new CustomBaseAdapter(getActivity().getApplicationContext(), headingList, descriptionList);
+        listView.setAdapter(customBaseAdapter1);
+        return fragmentView;
     }
 }

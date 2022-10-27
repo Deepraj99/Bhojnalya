@@ -7,58 +7,68 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+import android.widget.TextView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ListFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class ListFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    View fragmentView;
+    ListView listView;
+    String[] headingList = {
+            "SUNDAY\n-----------\nBreakfast", "Lunch", "Snacks", "Dinner",
+            "\nMONDAY\n-----------\nBreakfast", "Lunch", "Snacks", "Dinner",
+            "\nTUESDAY\n-----------\nBreakfast", "Lunch", "Snacks", "Dinner",
+            "\nWEDNESDAY\n-----------\nBreakfast", "Lunch", "Snacks", "Dinner",
+            "\nTHURSDAY\n-----------\nBreakfast", "Lunch", "Snacks", "Dinner",
+            "\nFRIDAY\n-----------\nBreakfast", "Lunch", "Snacks", "Dinner",
+            "\nSATURDAY\n-----------\nBreakfast", "Lunch", "Snacks", "Dinner",};
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    String[] descriptionList = {
+            "Egg bhurji\nBread-2\nMilk/Coffee\nBournvita",
+            "Chole bhature\nRice\nLassi\nSalad\nAachar",
+            "50-50 biscuit\nTea",
+            "Green seasonal vegetable\nArhar dal\nRoti\nRice\nSalad\nSewai",
 
-    public ListFragment() {
-        // Required empty public constructor
-    }
+            "Poha\nMilk/Coffee\nBournvita",
+            "Aloo matar\nMaa chole\nDal\nRice\nRoti\nDahi\nAchar\nSalad",
+            "Samosa\nTea",
+            "Kadhai chicken\nMashoor dal\nRoti\nRice\nSalad\nGulaab jamun",
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ListFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static ListFragment newInstance(String param1, String param2) {
-        ListFragment fragment = new ListFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+            "Seasonal paratha\nDahi\nButter\nMilk/Coffee\nAchar\nFruit",
+            "Aloo puri\nRice\nDahi\nSalad\nAchar",
+            "Samosa",
+            "Mix vegetable\nChana dal\nRoti\nRice\nSalad\nKesar kulfi",
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+            "Upma\nCornflakes\nMilk/Coffee\nFruit",
+            "White chole\nRoti\nRice\nSalad\nDahi\nLassi",
+            "Parle-G biscuit\nTea",
+            "Egg curry\nMoong dal\nRoti\nFried rice\nSalad\nAchar\nRasgulla",
+
+            "Missa paratha\nButter\nDahi\nMilk/Coffee\nBournvita\nFruit",
+            "Kadhi pakoda\nJeera aloo\nRoti\nRice\nSalad\nAchar",
+            "Biscuit\nLamonade",
+            "Seasonal vegetables\nDal makhani\nRoti\nRice\nSalad\nKheer",
+
+            "Aloo paratha\nDahi\nButter\nMilk/Coffee\nBournvita\nFruit\nAchar",
+            "Chole bhature\nSalad\nAchar\nRice\nLassi",
+            "50-50 Biscuit\nTea",
+            "Green seasonal vegetables\nArhar dal\nRoti\nRice\nSalad\nSewai",
+
+            "Daliya with mixed dry fruits\nSprouts\nTea",
+            "Rajma\nRoti\nRice\nSalad\nAchar\nDahi",
+            "Namkeen\nTea",
+            "Seasonal kofta\nMaa chana dal\nRoti\nRice\nSalad\nAchar\nSooji Halwa"};
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_list, container, false);
+
+        fragmentView = inflater.inflate(R.layout.fragment_list, container, false);
+        listView = fragmentView.findViewById(R.id.customListView);
+        CustomBaseAdapter customBaseAdapter1 = new CustomBaseAdapter(getActivity().getApplicationContext(), headingList, descriptionList);
+        listView.setAdapter(customBaseAdapter1);
+        return fragmentView;
     }
 }

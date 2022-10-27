@@ -20,10 +20,11 @@ public class HomeFragment extends Fragment {
     String dayOfTheWeek = sdf.format(d);
 
     View fragmentView;
-    ListView listView;
+    ListView listView, listView2;
     TextView currentDay;
     String[] headingList = {"Breakfast", "Lunch", "Snacks", "Dinner"};
-    String[] descriptionList;
+    String[] headingList1 = {"Breakfast", "Lunch", "Snacks", "Dinner"};
+    String[] descriptionList, descriptionList1;
 
 
 
@@ -37,6 +38,12 @@ public class HomeFragment extends Fragment {
                     "Chole bhature\nRice\nLassi\nSalad\nAachar",
                     "50-50 biscuit\nTea",
                     "Green seasonal vegetable\nArhar dal\nRoti\nRice\nSalad\nSewai"};
+
+            descriptionList1 = new String[] {
+                    "Sandwich\nKetchup\nMilk/Coffee\nBournvita",
+                    "Chole bhature\nRice\nLassi\nSalad\nAachar",
+                    "50-50 biscuit\nTea",
+                    "Green seasonal vegetable\nArhar dal\nRoti\nRice\nSalad\nSewai"};
         }
         else if(dayOfTheWeek.equals("Monday"))
         {
@@ -45,10 +52,22 @@ public class HomeFragment extends Fragment {
                     "Aloo matar\nMaa chole\nDal\nRice\nRoti\nDahi\nAchar\nSalad",
                     "Samosa\nTea",
                     "Kadhai chicken\nMashoor dal\nRoti\nRice\nSalad\nGulaab jamun"};
+
+            descriptionList1 = new String[] {
+                    "Poha\nMilk/Coffee\nBournvita",
+                    "Aloo matar\nMaa chole\nDal\nRice\nRoti\nDahi\nAchar\nSalad",
+                    "Samosa\nTea",
+                    "Matar paneer\nMashoor dal\nRoti\nRice\nSalad\nGulaab jamun"};
         }
         else if(dayOfTheWeek.equals("Tuesday"))
         {
             descriptionList = new String[] {
+                    "Seasonal paratha\nDahi\nButter\nMilk/Coffee\nAchar\nFruit",
+                    "Aloo puri\nRice\nDahi\nSalad\nAchar",
+                    "Samosa",
+                    "Mix vegetable\nChana dal\nRoti\nRice\nSalad\nKesar kulfi"};
+
+            descriptionList1 = new String[] {
                     "Seasonal paratha\nDahi\nButter\nMilk/Coffee\nAchar\nFruit",
                     "Aloo puri\nRice\nDahi\nSalad\nAchar",
                     "Samosa",
@@ -61,6 +80,12 @@ public class HomeFragment extends Fragment {
                     "White chole\nRoti\nRice\nSalad\nDahi\nLassi",
                     "Parle-G biscuit\nTea",
                     "Egg curry\nMoong dal\nRoti\nFried rice\nSalad\nAchar\nRasgulla"};
+
+            descriptionList1 = new String[] {
+                    "Upma\nCornflakes\nMilk/Coffee\nFruit",
+                    "White chole\nRoti\nRice\nSalad\nDahi\nLassi",
+                    "Parle-G biscuit\nTea",
+                    "Kadhai paneer\nMoong dal\nRoti\nFried rice\nSalad\nAchar\nRasgulla"};
         }
         else if(dayOfTheWeek.equals("Thursday"))
         {
@@ -69,18 +94,36 @@ public class HomeFragment extends Fragment {
                     "Kadhi pakoda\nJeera aloo\nRoti\nRice\nSalad\nAchar",
                     "Biscuit\nLamonade",
                     "Seasonal vegetables\nDal makhani\nRoti\nRice\nSalad\nKheer"};
+
+            descriptionList1 = new String[] {
+                    "Simple paratha\nAloo sabji\nButter\nDahi\nMilk/Coffee\nBournvita",
+                    "Kadhi pakoda\nJeera aloo\nRoti\nRice\nSalad\nAchar",
+                    "Biscuit\nLamonade",
+                    "Seasonal vegetables\nDal makhani\nRoti\nRice\nSalad\nKheer"};
         }
         else if(dayOfTheWeek.equals("Friday"))
         {
             descriptionList = new String[] {
                     "Aloo paratha\nDahi\nButter\nMilk/Coffee\nBournvita\nFruit\nAchar",
-                    "Chole bhature\nSalad\nAchar\nRice\nLassi",
-                    "50-50 Biscuit\nTea",
-                    "Green seasonal vegetables\nArhar dal\nRoti\nRice\nSalad\nSewai"};
+                    "Kala chana\nArhar dal\nRoti\nRice\nSalad\nAchar\nDahi",
+                    "Bread pakora\nTea",
+                    "Butter chicken\nUrad dal\nRoti\nRice\nSalad\nAchar\nIce-cream"};
+
+            descriptionList1 = new String[] {
+                    "Aloo paratha\nDahi\nButter\nMilk/Coffee\nBournvita\nFruit\nAchar",
+                    "Kala chana\nArhar dal\nRoti\nRice\nSalad\nAchar\nDahi",
+                    "Bread pakora\nTea",
+                    "Shahi paneer\nUrad dal\nRoti\nRice\nSalad\nAchar\nIce-cream"};
         }
         else
         {
             descriptionList = new String[] {
+                    "Daliya with mixed dry fruits\nSprouts\nTea",
+                    "Rajma\nRoti\nRice\nSalad\nAchar\nDahi",
+                    "Namkeen\nTea",
+                    "Seasonal kofta\nMaa chana dal\nRoti\nRice\nSalad\nAchar\nSooji Halwa"};
+
+            descriptionList1 = new String[] {
                     "Daliya with mixed dry fruits\nSprouts\nTea",
                     "Rajma\nRoti\nRice\nSalad\nAchar\nDahi",
                     "Namkeen\nTea",
@@ -91,7 +134,10 @@ public class HomeFragment extends Fragment {
         currentDay = fragmentView.findViewById(R.id.tv_current_day);
         currentDay.setText("It's " + dayOfTheWeek.toLowerCase() + " today!");
         listView = fragmentView.findViewById(R.id.customListView);
+        listView2 = fragmentView.findViewById(R.id.customListView2);
         CustomBaseAdapter customBaseAdapter1 = new CustomBaseAdapter(getActivity().getApplicationContext(), headingList, descriptionList);
+        CustomBaseAdapter customBaseAdapter2 = new CustomBaseAdapter(getActivity().getApplicationContext(), headingList1, descriptionList1);
+        listView2.setAdapter(customBaseAdapter2);
         listView.setAdapter(customBaseAdapter1);
         return fragmentView;
     }

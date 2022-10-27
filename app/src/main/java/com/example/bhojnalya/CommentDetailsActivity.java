@@ -52,7 +52,18 @@ public class CommentDetailsActivity extends AppCompatActivity {
 
         DocumentReference documentReference;
         documentReference = Utility.getCollectionReferenceForComments().document();
-        Utility.showToast(CommentDetailsActivity.this, "Button Clicked!");
-        documentReference.set(comment);
+
+        documentReference.set(comment).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()) {
+                    Utility.showToast(CommentDetailsActivity.this, "Comment added successfully!");
+                    finish();
+                }
+                else {
+                    Utility.showToast(CommentDetailsActivity.this, "Failed while adding comment.");
+                }
+            }
+        });
     }
 }

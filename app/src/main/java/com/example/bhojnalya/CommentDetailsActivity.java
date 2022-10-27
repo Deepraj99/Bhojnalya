@@ -34,8 +34,12 @@ public class CommentDetailsActivity extends AppCompatActivity {
         String commentTitle = titleEditText.getText().toString();
         String commentContent = contentEditText.getText().toString();
 
-        if(commentTitle.isEmpty() || commentContent.isEmpty()) {
+        if(commentTitle.isEmpty()) {
             titleEditText.setError("Title is required.");
+            return;
+        }
+        if(commentContent.isEmpty()) {
+            contentEditText.setError("Comment is required.");
             return;
         }
 

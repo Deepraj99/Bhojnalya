@@ -11,4 +11,5 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="nonveg_menu">NonVeg Menu</string>
     <string name="veg_menu">Veg Menu</string>
+    <string name="delete">Delete comment</string>
 </resources>

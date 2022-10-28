@@ -8,13 +8,16 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.Query;
 
 public class CommentFragment extends Fragment {
@@ -41,7 +44,23 @@ public class CommentFragment extends Fragment {
         return commentFragment;
     }
 
-    void showMenu() {}
+    void showMenu() {
+        PopupMenu popupMenu = new PopupMenu(getContext(), menuBtn);
+        popupMenu.getMenu().add("Logout");
+        popupMenu.show();
+        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                if(menuItem.getTitle() == "Logout") {
+                    FirebaseAuth.getInstance().signOut();
+                    startActivity(new Intent(getContext(), CustomerOrVendorActivity.class));
+                    getActivity().finish();
+                    return true;
+                }
+                return false;
+            }
+        });
+    }
     void setupRecyclerView() {
 
         Query query = Utility.getCollectionReferenceForComments().orderBy("timestamp", Query.Direction.DESCENDING);

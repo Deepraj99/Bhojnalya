@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -20,6 +21,7 @@ public class CommentDetailsActivity extends AppCompatActivity {
     ImageView saveNoteBtn;
     TextView pageTitleTextView;
     String title, content, docId;
+    TextView deleteCommentTextView;
     boolean isEditMode = false;
 
     @Override
@@ -31,6 +33,7 @@ public class CommentDetailsActivity extends AppCompatActivity {
         contentEditText = findViewById(R.id.comment_content_text);
         saveNoteBtn = findViewById(R.id.save_comment);
         pageTitleTextView = findViewById(R.id.tv_heading);
+        deleteCommentTextView = findViewById(R.id.tv_delete);
 
         title = getIntent().getStringExtra("title");
         content = getIntent().getStringExtra("content");
@@ -45,8 +48,28 @@ public class CommentDetailsActivity extends AppCompatActivity {
 
         if(isEditMode) {
             pageTitleTextView.setText("Edit your comment");
+            deleteCommentTextView.setVisibility(View.VISIBLE);
         }
         saveNoteBtn.setOnClickListener( (v) -> saveComment());
+        deleteCommentTextView.setOnClickListener((v) -> deleteCommentFromFirebase());
+    }
+
+    void deleteCommentFromFirebase() {
+        DocumentReference documentReference;
+        documentReference = Utility.getCollectionReferenceForComments().document(docId);
+
+        documentReference.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()) {
+                    Utility.showToast(CommentDetailsActivity.this, "Comment deleted successfully!");
+                    finish();
+                }
+                else {
+                    Utility.showToast(CommentDetailsActivity.this, "Failed while deleting comment.");
+                }
+            }
+        });
     }
 
     void saveComment() {

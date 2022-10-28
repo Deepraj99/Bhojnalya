@@ -9,80 +9,45 @@
     android:paddingHorizontal="10dp"
     tools:context=".HomeFragment">
 
-    <TextView
-        android:id="@+id/tv_current_day"
+    <LinearLayout
+        android:id="@+id/linear_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="It's Sunday today!"
-        android:textColor="@color/yellow"
-        android:gravity="center_horizontal"
-        android:textSize="20sp"
-        android:textStyle="italic|bold"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="20dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/tv_non_veg_mess"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="NonVeg Menu"
-        android:layout_marginStart="10dp"
-        android:textColor="@color/dark_gray"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/divider"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_current_day" />
+        <Button
+            android:id="@+id/non_veg_menu_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/nonveg_menu"
+            android:backgroundTint="@color/yellow"
+            android:paddingVertical="10dp"
+            android:layout_marginEnd="7dp"
+            android:layout_weight="1" />
 
-    <TextView
-        android:id="@+id/tv_veg_mess"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="Veg Menu"
-        android:textColor="@color/dark_gray"
-        android:layout_marginStart="10dp"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/divider"
-        app:layout_constraintTop_toBottomOf="@+id/tv_current_day" />
+        <Button
+            android:id="@+id/veg_menu_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/light_yellow"
+            android:text="@string/veg_menu"
+            android:paddingVertical="10dp"
+            android:layout_marginEnd="7dp"
+            android:layout_weight="1" />
+    </LinearLayout>
 
-    <View
-        android:id="@+id/divider"
-        android:layout_width="1dp"
+    <FrameLayout
+        android:id="@+id/frame_layout"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@android:color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_current_day" />
-
-    <ListView
-        android:id="@+id/customListView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:divider="@color/yellow"
-        android:dividerHeight="1dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/divider"
-        app:layout_constraintHorizontal_weight="1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_non_veg_mess" />
-
-    <ListView
-        android:id="@+id/customListView2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:divider="@color/yellow"
-        android:dividerHeight="1dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_weight="1"
-        app:layout_constraintStart_toEndOf="@+id/divider"
-        app:layout_constraintTop_toBottomOf="@+id/tv_veg_mess" />
+        app:layout_constraintTop_toBottomOf="@+id/linear_layout" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

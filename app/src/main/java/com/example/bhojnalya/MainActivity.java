@@ -35,9 +35,9 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.comments:
                     replaceFragment(new CommentFragment());
                     break;
-                case R.id.profile:
-                    replaceFragment(new ProfileFragment());
-                    break;
+//                case R.id.profile:
+//                    replaceFragment(new ProfileFragment());
+//                    break;
             }
             return true;
         });

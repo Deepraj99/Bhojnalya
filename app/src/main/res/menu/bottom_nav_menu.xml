@@ -9,15 +9,15 @@
         android:title="List"
         android:icon="@drawable/ic_list"/>
     <item
-        android:id="@+id/scanner"
-        android:title="Scanner"
-        android:icon="@drawable/ic_scanner"/>
-    <item
         android:id="@+id/comments"
         android:title="Comment"
         android:icon="@drawable/ic_comment"/>
     <item
-        android:id="@+id/profile"
-        android:title="Profile"
-        android:icon="@drawable/ic_account"/>
+        android:id="@+id/scanner"
+        android:title="Scanner"
+        android:icon="@drawable/ic_scanner"/>
+<!--    <item-->
+<!--        android:id="@+id/profile"-->
+<!--        android:title="Profile"-->
+<!--        android:icon="@drawable/ic_account"/>-->
 </menu>

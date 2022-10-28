@@ -1,6 +1,7 @@
 package com.example.bhojnalya;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +26,15 @@ public class CommentAdapter extends FirestoreRecyclerAdapter<Comment, CommentAda
         holder.titleTextView.setText(comment.title);
         holder.contentTextView.setText(comment.content);
         holder.timestampTextView.setText(Utility.timestampToString(comment.timestamp));
+
+        holder.itemView.setOnClickListener((v) -> {
+            Intent intent = new Intent(context, CommentDetailsActivity.class);
+            intent.putExtra("title", comment.title);
+            intent.putExtra("content", comment.content);
+            String docId = this.getSnapshots().getSnapshot(position).getId();
+            intent.putExtra("docId", docId);
+            context.startActivity(intent);
+        });
 
     }
 

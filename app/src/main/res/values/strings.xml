@@ -12,4 +12,5 @@
     <string name="nonveg_menu">NonVeg Menu</string>
     <string name="veg_menu">Veg Menu</string>
     <string name="delete">Delete comment</string>
+    <string name="scan">Scan</string>
 </resources>
